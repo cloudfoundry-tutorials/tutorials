@@ -1,89 +1,118 @@
 ---
+resource_types:
+
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+
 resources:
 
-  - name: page-source
-    type: git
-    source:
-      uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-      branch: master
-      username: ((github_username))
-      password: ((github_password))
-      paths: [landing-page/*]
+- name: slack
+  type: slack-notification
+  source:
+    url: ((slack_webhook_url))
 
-  - name: ci-source
-    type: git
-    source:
-      uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-      branch: master
-      username: ((github_username))
-      password: ((github_password))
-      paths: [ci/*]
+- name: page-source
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry-tutorials/tutorials.git
+    branch: master
+    username: ((github_username))
+    password: ((github_password))
+    paths: [landing-page/*]
 
-  - name: version
-    type: semver
-    source:
-      driver: s3
-      initial_version: 0.0.1
-      bucket: tutorials.cff.rscale.io
-      key: landing-page/version
-      access_key_id: ((aws_access_key_id))
-      secret_access_key: ((aws_secret_access_key))
-      region_name: us-west-2
+- name: ci-source
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry-tutorials/tutorials.git
+    branch: master
+    username: ((github_username))
+    password: ((github_password))
+    paths: [ci/*]
 
-  - name: artifact
-    type: s3
-    source:
-      regexp: landing-page/landing-page-(.*).zip
-      bucket: tutorials.cff.rscale.io
-      access_key_id: ((aws_access_key_id))
-      secret_access_key: ((aws_secret_access_key))
-      region_name: us-west-2
+- name: version
+  type: semver
+  source:
+    driver: s3
+    initial_version: 0.0.1
+    bucket: tutorials.cff.rscale.io
+    key: landing-page/version
+    access_key_id: ((aws_access_key_id))
+    secret_access_key: ((aws_secret_access_key))
+    region_name: us-west-2
 
-  
+- name: artifact
+  type: s3
+  source:
+    regexp: landing-page/landing-page-(.*).zip
+    bucket: tutorials.cff.rscale.io
+    access_key_id: ((aws_access_key_id))
+    secret_access_key: ((aws_secret_access_key))
+    region_name: us-west-2
 
-  # - name: deploy-staging
-  #   type: cf
-  #   source:
-  #     api: ((cf_staging_api))
-  #     username: ((cf_staging_user))
-  #     password: ((cf_staging_pwd))
-  #     organization: ((cf_staging_org))
-  #     space: ((cf_staging_space))
+- name: staging-manifest
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry-tutorials/tutorials.git
+    branch: master
+    username: ((github_username))
+    password: ((github_password))
+    paths: [landing-page/staging-manifest.yml]
 
+- name: deploy-staging
+  type: cf
+  source:
+    api: https://api.run.pivotal.io
+    username: ((pws_username))
+    password: ((pws_password))
+    organization: cff
+    space: tutorials
 
 jobs:
 
   - name: build
     serial_groups: [version]
     plan:
-      - in_parallel:
-          - get: page-source
-            trigger: true
-            params: {depth: 1}
-          - get: ci-source
-            params: {depth: 1}
-          - get: version
-            params: {pre: rc}
-      - task: build
-        file: ci-source/ci/landing/tasks/build.yml
-      - put: artifact
-        params: {file: site/*.zip}
-      - put: version
-        params: {file: version/version}
+    - in_parallel:
+        - get: page-source
+          trigger: true
+          params: {depth: 1}
+        - get: ci-source
+          params: {depth: 1}
+        - get: version
+          params: {pre: rc}
+    - task: build
+      file: ci-source/ci/landing/tasks/build.yml
+    - put: artifact
+      params: {file: site/*.zip}
+    - put: version
+      params: {file: version/version}
 
-  # - name: deploy-staging
-  #   serial_groups: [staging]
-  #   plan:
-  #     - in_parallel:
-  #         - get: artifact
-  #           trigger: true
-  #           passed: [build]
-  #         - get: manifest
-  #           passed: [build]
-  #     - put: deploy-staging
-  #       params:
-  #         manifest:  manifest/manifest-*.yml
-  #         path: artifact/*.zip
+  - name: deploy-staging
+    serial_groups: [staging]
+    plan:
+    - in_parallel:
+        - get: artifact
+          trigger: true
+          passed: [build]
+        - get: staging-manifest
+          trigger: true
+          params: {depth: 1}
+    - put: deploy-staging
+      params:
+        manifest:  staging-manifest/landing-page/staging-manifest.yml
+        path: artifact/*.zip
+    on_success:
+      put: slack
+      params:
+        username: "rscale-ci"
+        text: "CFF tutorials landing page deployed to staging at https://tutorials.cff.rscale.dev"
+    on_failure:
+      put: slack
+      params:
+        username: "rscale-ci"
+        text: "FAILED to deploy CFF tutorials landing page to staging: https://ci.aws.rscale.io/teams/cff-tutorials/pipelines/landing-page"
 
   # - name: promotion
   #   plan:

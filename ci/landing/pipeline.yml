@@ -1,0 +1,148 @@
+---
+resources:
+
+  - name: page-source
+    type: git
+    source:
+      uri: https://github.com/cloudfoundry-tutorials/tutorials.git
+      branch: master
+      username: ((github_username))
+      password: ((github_password))
+      paths: [landing-page/*]
+
+  - name: ci-source
+    type: git
+    source:
+      uri: https://github.com/cloudfoundry-tutorials/tutorials.git
+      branch: master
+      username: ((github_username))
+      password: ((github_password))
+      paths: [ci/*]
+
+  - name: version
+    type: semver
+    source:
+      driver: s3
+      initial_version: 0.0.1
+      bucket: tutorials.cff.rscale.io
+      key: landing-page/version
+      access_key_id: ((aws_access_key_id))
+      secret_access_key: ((aws_secret_access_key))
+      region_name: us-west-2
+
+  - name: artifact
+    type: s3
+    source:
+      regexp: landing-page/landing-page-(.*).zip
+      bucket: tutorials.cff.rscale.io
+      access_key_id: ((aws_access_key_id))
+      secret_access_key: ((aws_secret_access_key))
+      region_name: us-west-2
+
+  
+
+  # - name: deploy-staging
+  #   type: cf
+  #   source:
+  #     api: ((cf_staging_api))
+  #     username: ((cf_staging_user))
+  #     password: ((cf_staging_pwd))
+  #     organization: ((cf_staging_org))
+  #     space: ((cf_staging_space))
+
+
+jobs:
+
+  - name: build
+    serial_groups: [version]
+    plan:
+      - in_parallel:
+          - get: page-source
+            trigger: true
+            params: {depth: 1}
+          - get: ci-source
+            params: {depth: 1}
+          - get: version
+            params: {pre: rc}
+      - task: build
+        file: ci-source/ci/landing/tasks/build.yml
+      - put: artifact
+        params: {file: site/*.zip}
+      - put: version
+        params: {file: version/version}
+
+  # - name: deploy-staging
+  #   serial_groups: [staging]
+  #   plan:
+  #     - in_parallel:
+  #         - get: artifact
+  #           trigger: true
+  #           passed: [build]
+  #         - get: manifest
+  #           passed: [build]
+  #     - put: deploy-staging
+  #       params:
+  #         manifest:  manifest/manifest-*.yml
+  #         path: artifact/*.zip
+
+  # - name: promotion
+  #   plan:
+  #     - in_parallel:
+  #         - get: artifact
+  #           passed: [build]
+  #         - get: manifest
+  #           passed: [build]
+  #         - get: ci-source
+  #           params: {depth: 1}
+  #         - get: version
+  #           params: {bump: final}
+  #     - task: promotion
+  #       file: ci-source/tasks/promotion.yml
+  #       params:
+  #         COURSE_NAME: ((course_name))
+  #     - put: artifact
+  #       params: {file: artifact/*.zip}
+  #     - put: manifest
+  #       params: {file: manifest/*.yml}
+  #     - put: version
+  #       params:
+  #         file: version/version
+  #         bump: patch
+
+  # - name: deploy-prod
+  #   serial_groups: [staging]
+  #   plan:
+  #     - in_parallel:
+  #         - get: artifact
+  #           passed: [promotion]
+  #         - get: manifest
+  #           passed: [build]
+  #     - put: deploy-prod
+  #       params:
+  #         manifest: manifest/manifest-*.yml
+  #         path: artifact/*.zip
+
+
+
+
+#  - name: promotion
+#    serial_groups:
+#    plan:
+#      - get: promotion
+#        params: {pre: rc}
+#      - task:
+#      - put: version-rc
+#        params: {file: version/version}
+
+
+# - name: minor
+#   serial_groups: [version]
+#   plan:
+#     - put: version
+#       params: {bump: minor, pre: rc}
+
+# - name: major
+#   serial_groups: [version]
+#   plan:
+#     - put: version
+#       params: {bump: major, pre: rc}

@@ -1,0 +1,9 @@
+---
+applications:
+- name: landing-page
+  instances: 1
+  memory: 64M
+  buildpacks:
+  - staticfile_buildpack
+  routes:
+  - route: "tutorials.cff.rscale.dev"

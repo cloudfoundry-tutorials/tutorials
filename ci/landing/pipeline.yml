@@ -101,6 +101,7 @@ jobs:
           params: {depth: 1}
     - put: deploy-staging
       params:
+        current_app_name: landing-page
         manifest:  staging-manifest/landing-page/staging-manifest.yml
         path: artifact/*.zip
     on_success:

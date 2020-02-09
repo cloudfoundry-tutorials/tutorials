@@ -6,5 +6,5 @@ applications:
   buildpacks:
   - staticfile_buildpack
   routes:
-  - route: "tutorials.cff.rscale.dev"
+  - route: "cff-tutorials.rscale.dev"
   - route: "cff-tutorials-staging.cfapps.io"

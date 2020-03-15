@@ -3,15 +3,13 @@
 set -e
 
 version=$(cat version/version)
-tutorial_commit_hash=$(cat page-source/.git/ref)
+tutorial_commit_hash=$(cat tutorial-source/.git/ref)
 theme_commit_hash=$(cat theme-source/.git/ref)
 year=$(date +%Y)
 
 echo "Building tutorial version: ${version}"
 
 echo "Building tutorial landing page version: ${version}, commit hash: ${commit_hash}, theme commit hash: ${theme_commit_hash}"
-
-echo 'version = "'${version}'"' >> tutorial-source/config.toml
 
 mkdir build
 cd build
@@ -30,6 +28,7 @@ cp ci-source/ci/tutorial/hugo-config.yml config.yml
 sed -i 's/((title))/${TITLE}/g' config.yml
 sed -i 's/((source_repo_name))/${SOURCE_REPO_NAME}/g' config.yml
 sed -i 's/((meta_description))/${META_DESCRIPTION}/g' config.yml
+echo 'version: "'${version}'"' >> config.toml
 
 hugo 
 

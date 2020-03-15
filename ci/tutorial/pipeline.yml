@@ -16,7 +16,7 @@ resources:
 - name: tutorial-source
   type: git
   source:
-    uri: ((tutorial_source_git_uri))
+    uri: https://github.com/cloudfoundry-tutorials/((source_repo_name))
     branch: master
     username: ((github_username))
     password: ((github_password))

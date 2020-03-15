@@ -43,7 +43,7 @@ resources:
   source:
     driver: s3
     initial_version: 0.0.1
-    bucket: tutorials.cff.rscale.dev
+    bucket: tutorials.cff.rscale.io
     key: ((source_repo_name))/version
     access_key_id: ((aws_access_key_id))
     secret_access_key: ((aws_secret_access_key))
@@ -53,7 +53,7 @@ resources:
   type: s3
   source:
     regexp: ((source_repo_name))/((source_repo_name))-(.*).zip
-    bucket: tutorials.cff.rscale.dev
+    bucket: tutorials.cff.rscale.io
     access_key_id: ((aws_access_key_id))
     secret_access_key: ((aws_secret_access_key))
     region_name: us-west-2

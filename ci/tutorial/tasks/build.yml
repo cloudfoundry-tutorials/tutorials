@@ -1,0 +1,25 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: rscale/ubuntu-hugo
+    tag: 'latest'
+
+inputs:
+  - name: tutorial-source
+  - name: theme-source
+  - name: ci-source
+  - name: version
+
+outputs:
+  - name: site
+
+run:
+  path: ci-source/ci/tutorial/tasks/build.sh
+
+params:
+  TITLE: 
+  SOURCE_REPO_NAME: 
+  META_DESCRIPTION:

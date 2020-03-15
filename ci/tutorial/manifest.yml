@@ -1,0 +1,10 @@
+---
+applications:
+- name: ((app_name))
+  disk_quota: 64M
+  memory: 32M
+  instances: ((instances))
+  buildpacks:
+    - staticfile_buildpack
+  routes:
+    - route: ((base_route))/((app_name))

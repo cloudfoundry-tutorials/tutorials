@@ -31,6 +31,8 @@ sed -i "s/((source_repo_name))/${SOURCE_REPO_NAME}/g" config.yml
 sed -i "s/((meta_description))/${META_DESCRIPTION}/g" config.yml
 echo 'version: "'${version}'"' >> config.yml
 
+cat config.yml
+
 pwd
 find .
 

@@ -30,7 +30,7 @@ params:
   google_analytics_id: "UA-160449920-1"
   homepage_button_link: "/docs"
   homepage_button_text: "Start the Tutorial"
-  homepage_intro: "((homepage_intro))"
+  #homepage_intro: "((homepage_intro))"
   # homepage_image = '/images/terminal.gif'
 
   ## You can enable to add anchor links to header elements

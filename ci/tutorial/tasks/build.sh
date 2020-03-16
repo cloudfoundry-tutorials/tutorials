@@ -33,10 +33,10 @@ echo 'version: "'${version}'"' >> config.yml
 hugo 
 
 cd ..
-mkdir -p to_zip/$BASE_PATH
-cp -R build/public/* to_zip/$BASE_PATH
+mkdir -p to_zip/${BASE_PATH}
+cp -R build/public/* to_zip/${BASE_PATH}
 echo "pushstate: enabled" > to_zip/Staticfile
-artifact_name="${TUTORIAL_NAME}-${version}.zip"
+artifact_name="${SOURCE_REPO_NAME}-${version}.zip"
 zip -r ${artifact_name} to_zip/* -x "*.DS_Store"
 mv ${artifact_name} site
 

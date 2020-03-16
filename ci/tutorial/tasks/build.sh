@@ -36,7 +36,7 @@ cat config.yml
 pwd
 find .
 
-hugo --debug --verbose --verboseLog
+hugo --ignoreCache --debug --verbose --verboseLog
 
 cd ..
 mkdir -p to_zip/${SOURCE_REPO_NAME}

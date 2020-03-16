@@ -97,9 +97,12 @@ jobs:
 - name: deploy-staging
   serial_groups: [staging]
   plan:
-  - get: artifact
-    trigger: true
-    passed: [build]
+  - in_parallel:
+    - get: artifact
+      trigger: true
+      passed: [build]
+    - get: ci-source
+      params: {depth: 1}  
   - put: deploy-staging
     params:
       manifest:  ci-source/ci/tutorial/manifest.yml

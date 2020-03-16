@@ -111,7 +111,7 @@ jobs:
       vars:
         app_name: ((source_repo_name))
         base_route: cff-tutorials.rscale.dev
-        instances: 1
+        num_instances: 1
   on_success:
     put: slack
     params:

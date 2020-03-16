@@ -3,7 +3,7 @@ applications:
 - name: ((app_name))
   disk_quota: 64M
   memory: 32M
-  instances: ((instances))
+  instances: ((num_instances))
   buildpacks:
     - staticfile_buildpack
   routes:

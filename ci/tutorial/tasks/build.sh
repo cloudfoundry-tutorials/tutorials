@@ -26,9 +26,9 @@ cp -R ../theme-source/* themes/hugo-whisper-theme
 # config.yml
 rm config.toml
 cp ../ci-source/ci/tutorial/hugo-config.yml config.yml
-sed -i 's/((title))/${TITLE}/g' config.yml
-sed -i 's/((source_repo_name))/${SOURCE_REPO_NAME}/g' config.yml
-sed -i 's/((meta_description))/${META_DESCRIPTION}/g' config.yml
+sed -i "s/((title))/${TITLE}/g" config.yml
+sed -i "s/((source_repo_name))/${SOURCE_REPO_NAME}/g" config.yml
+sed -i "s/((meta_description))/${META_DESCRIPTION}/g" config.yml
 echo 'version: "'${version}'"' >> config.yml
 
 pwd

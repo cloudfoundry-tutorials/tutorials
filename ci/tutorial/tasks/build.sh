@@ -9,13 +9,13 @@ year=$(date +%Y)
 
 echo "Building tutorial version: ${version}"
 
-echo "Building tutorial landing page version: ${version}, commit hash: ${commit_hash}, theme commit hash: ${theme_commit_hash}"
+echo "Building tutorial ${SOURCE_REPO_NAME} version: ${version}, commit hash: ${commit_hash}, theme commit hash: ${theme_commit_hash}"
 
 mkdir build
 cd build
 hugo new site .
 
-cp -R ../tutorial-source/content content
+cp -R ../tutorial-source/content/* content
 if [ -d "../tutorial-source/static" ]; then
 	cp -R ../tutorial-source/static static
 fi

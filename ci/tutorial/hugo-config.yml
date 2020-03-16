@@ -1,5 +1,5 @@
 ---
-baseURL: ""
+baseURL: "((source_repo_name))"
 languageCode: "en-us"
 title: "((title))"
 theme: "hugo-whisper-theme"

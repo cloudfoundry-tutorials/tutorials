@@ -115,7 +115,7 @@ jobs:
   - put: deploy-staging
     params:
       manifest:  ci-source/ci/tutorial/manifest.yml
-      path: artifact/*.zip
+      path: rc/*.zip
       current_app_name: ((source_repo_name))
       vars:
         app_name: ((source_repo_name))

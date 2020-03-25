@@ -10,6 +10,7 @@ image_resource:
 inputs:
 - name: rc
 - name: version
+- name: ci-source
 
 outputs:
 - name: artifact

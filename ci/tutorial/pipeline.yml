@@ -139,6 +139,8 @@ jobs:
       passed: [deploy-staging]
     - get: version
       params: {bump: final}
+    - get: ci-source
+      params: {depth: 1}   
   - task: promote
     file: ci-source/tasks/promote.yml
     params:

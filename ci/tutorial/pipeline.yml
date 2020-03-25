@@ -142,7 +142,7 @@ jobs:
     - get: ci-source
       params: {depth: 1}   
   - task: promote
-    file: ci-source/tasks/promote.yml
+    file: ci-source/ci/tutorial/tasks/promote.yml
     params:
       SOURCE_REPO_NAME: ((source_repo_name))
   - put: artifact

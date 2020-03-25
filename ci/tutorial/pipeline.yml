@@ -49,6 +49,15 @@ resources:
     secret_access_key: ((aws_secret_access_key))
     region_name: us-west-2
 
+- name: rc
+  type: s3
+  source:
+    regexp: ((source_repo_name))/rc/((source_repo_name))-(.*).zip
+    bucket: tutorials.cff.rscale.io
+    access_key_id: ((aws_access_key_id))
+    secret_access_key: ((aws_secret_access_key))
+    region_name: us-west-2
+
 - name: artifact
   type: s3
   source:
@@ -89,7 +98,7 @@ jobs:
       TITLE: ((title))
       SOURCE_REPO_NAME: ((source_repo_name))
       META_DESCRIPTION: ((meta_description))
-  - put: artifact
+  - put: rc
     params: {file: site/*.zip}
   - put: version
     params: {file: version/version}
@@ -98,7 +107,7 @@ jobs:
   serial_groups: [staging]
   plan:
   - in_parallel:
-    - get: artifact
+    - get: rc
       trigger: true
       passed: [build]
     - get: ci-source
@@ -122,30 +131,24 @@ jobs:
       username: "rscale-ci"
       text: "FAILED to deploy CFF tutorial to staging: https://ci.aws.rscale.io/teams/cff-tutorials/pipelines/((source_repo_name))"
 
-
-  # - name: promotion
-  #   plan:
-  #     - in_parallel:
-  #         - get: artifact
-  #           passed: [build]
-  #         - get: manifest
-  #           passed: [build]
-  #         - get: ci-source
-  #           params: {depth: 1}
-  #         - get: version
-  #           params: {bump: final}
-  #     - task: promotion
-  #       file: ci-source/tasks/promotion.yml
-  #       params:
-  #         COURSE_NAME: ((course_name))
-  #     - put: artifact
-  #       params: {file: artifact/*.zip}
-  #     - put: manifest
-  #       params: {file: manifest/*.yml}
-  #     - put: version
-  #       params:
-  #         file: version/version
-  #         bump: patch
+- name: promote
+  serial_groups: [version]
+  plan:
+  - in_parallel:
+    - get: rc
+      passed: [deploy-staging]
+    - get: version
+      params: {bump: final}
+  - task: promote
+    file: ci-source/tasks/promote.yml
+    params:
+      SOURCE_REPO_NAME: ((source_repo_name))
+  - put: artifact
+    params: {file: artifact/*.zip}
+  - put: version
+    params:
+      file: version/version
+      bump: patch
 
   # - name: deploy-prod
   #   serial_groups: [staging]

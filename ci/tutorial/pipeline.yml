@@ -148,9 +148,7 @@ jobs:
   - put: artifact
     params: {file: artifact/*.zip}
   - put: version
-    params:
-      file: version/version
-      bump: patch
+    params: {bump: patch}
 
   # - name: deploy-prod
   #   serial_groups: [staging]
@@ -164,18 +162,6 @@ jobs:
   #       params:
   #         manifest: manifest/manifest-*.yml
   #         path: artifact/*.zip
-
-
-
-
-#  - name: promotion
-#    serial_groups:
-#    plan:
-#      - get: promotion
-#        params: {pre: rc}
-#      - task:
-#      - put: version-rc
-#        params: {file: version/version}
 
 
 # - name: minor

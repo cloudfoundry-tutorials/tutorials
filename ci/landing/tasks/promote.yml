@@ -1,0 +1,19 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: rscale/ubuntu-base
+    tag: 'latest'
+
+inputs:
+- name: rc
+- name: version
+- name: ci-source
+
+outputs:
+- name: artifact
+
+run:
+  path: ci-source/ci/landing/tasks/promote.sh

@@ -1,10 +1,9 @@
 ---
 applications:
 - name: landing-page
-  instances: 1
+  instances: 2
   memory: 32M
   buildpacks:
   - staticfile_buildpack
   routes:
-  - route: "cff-tutorials.rscale.dev"
-  - route: "cff-tutorials-staging.cfapps.io"
+  - route: "tutorials.cloudfoundry.org"

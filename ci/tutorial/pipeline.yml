@@ -76,6 +76,15 @@ resources:
     organization: cff
     space: tutorials
 
+- name: deploy-production
+  type: cf
+  source:
+    api: https://api.run.pivotal.io
+    username: ((pws_username))
+    password: ((pws_password))
+    organization: cfcommunity
+    space: tutorials
+
 jobs:
 
 - name: build
@@ -150,18 +159,34 @@ jobs:
   - put: version
     params: {bump: patch}
 
-  # - name: deploy-prod
-  #   serial_groups: [staging]
-  #   plan:
-  #     - in_parallel:
-  #         - get: artifact
-  #           passed: [promotion]
-  #         - get: manifest
-  #           passed: [build]
-  #     - put: deploy-prod
-  #       params:
-  #         manifest: manifest/manifest-*.yml
-  #         path: artifact/*.zip
+- name: deploy-production
+  serial_groups: [staging]
+  plan:
+  - in_parallel:
+    - get: artifact
+      trigger: true
+      passed: [promote]
+    - get: ci-source
+      params: {depth: 1}  
+  - put: deploy-production
+    params:
+      manifest:  ci-source/ci/tutorial/manifest.yml
+      path: artifact/*.zip
+      current_app_name: ((source_repo_name))
+      vars:
+        app_name: ((source_repo_name))
+        base_route: tutorials.cloudfoundry.org
+  on_success:
+    put: slack
+    params:
+      username: "rscale-ci"
+      text: "CFF tutorial deployed to production at https://tutorials.cloudfoundry.org/((source_repo_name))"
+  on_failure:
+    put: slack
+    params:
+      username: "rscale-ci"
+      text: "FAILED to deploy CFF tutorial to production: https://ci.aws.rscale.io/teams/cff-tutorials/pipelines/((source_repo_name))"
+
 
 
 # - name: minor

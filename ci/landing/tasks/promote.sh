@@ -6,4 +6,4 @@ version=$(cat version/version)
 
 echo "Promoting to version: ${version}"
 
-mv rc/*.zip artifact/landing-page--${version}.zip
+mv rc/*.zip artifact/landing-page-${version}.zip

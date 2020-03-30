@@ -130,7 +130,7 @@ jobs:
     params:
       current_app_name: landing-page
       manifest:  staging-manifest/landing-page/staging-manifest.yml
-      path: artifact/*.zip
+      path: rc/*.zip
   on_success:
     put: slack
     params:

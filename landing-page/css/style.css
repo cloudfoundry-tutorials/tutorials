@@ -1,13 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
 
 body {
 	font-family: 'Roboto', sans-serif;
+} */
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+  max-width: 960px;
 }
 
 .navbar-brand img {
-	max-width: 215px;
+	max-width: 250px;
 }
 
+#landing p.lead {
+	font-size: 1.6em;
+}
+
+#footer {
+	padding-top: 15px;
+	text-align: center;
+	font-size: 0.8em;
+} 
+/*
 #content {
 	margin-top: 90px;
 }
@@ -47,9 +70,7 @@ h4 {
 	font-weight: 400;
 }
 
-.content-section h3 > span.note {
-	font-size: 0.8em;
-}
+
 
 .section-description {
 	font-style: italic;
@@ -59,8 +80,4 @@ h4 {
 	padding-bottom: 160px;
 }
 
-#footer {
-	padding-top: 15px;
-	text-align: center;
-	font-size: 0.8em;
-}
+*/

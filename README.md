@@ -17,5 +17,5 @@ All of the course materials except the Katacoda tutorials are in public reposito
 
 #### Have an idea?
 
-Do you have an idea for a new tutorial you would like to discuss? Join us in the [#cloudfoundry-tutorials] channel(https://cloudfoundry.slack.com/archives/CV4DDJXGA) in the Cloud Foundry slack.
+Do you have an idea for a new tutorial you would like to discuss? Join us in the [#cloudfoundry-tutorials](https://cloudfoundry.slack.com/archives/CV4DDJXGA) channel in the Cloud Foundry slack.
 

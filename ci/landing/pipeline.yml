@@ -17,7 +17,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
     paths: [landing-page/*]
@@ -26,7 +26,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
     paths: [ci/*]
@@ -64,7 +64,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
     paths: [landing-page/staging-manifest.yml]
@@ -82,7 +82,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
     paths: [landing-page/production-manifest.yml]

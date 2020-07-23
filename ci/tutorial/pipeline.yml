@@ -17,7 +17,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/((source_repo_name)).git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
 
@@ -25,7 +25,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/tutorials.git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
     paths: [ci/tutorial/*]
@@ -34,7 +34,7 @@ resources:
   type: git
   source:
     uri: https://github.com/cloudfoundry-tutorials/hugo-whisper-theme.git
-    branch: master
+    branch: main
     username: ((github_username))
     password: ((github_password))
 

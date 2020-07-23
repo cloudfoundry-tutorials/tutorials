@@ -128,12 +128,12 @@ jobs:
       current_app_name: ((source_repo_name))
       vars:
         app_name: ((source_repo_name))
-        base_route: cff-tutorials.rscale.dev
+        base_route: cff-tutorials-staging.cfapps.io
   on_success:
     put: slack
     params:
       username: "rscale-ci"
-      text: "CFF tutorial deployed to staging at https://cff-tutorials.rscale.dev/((source_repo_name))"
+      text: "CFF tutorial deployed to staging at https://cff-tutorials-staging.cfapps.io/((source_repo_name))"
   on_failure:
     put: slack
     params:

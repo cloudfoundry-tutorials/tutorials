@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 version=$(cat version/version)
 tutorial_commit_hash=$(cat tutorial-source/.git/ref)

@@ -37,6 +37,7 @@ cd ..
 mkdir -p to_zip/${SOURCE_REPO_NAME}
 cp -R build/public/* to_zip/${SOURCE_REPO_NAME}
 echo "pushstate: enabled" > to_zip/Staticfile
+echo "force_https: true" >> to_zip/Staticfile
 artifact_name="${SOURCE_REPO_NAME}-${version}.zip"
 pushd to_zip
 	zip -r ${artifact_name} * -x "*.DS_Store"

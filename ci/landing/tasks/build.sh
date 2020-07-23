@@ -13,6 +13,8 @@ pushd page-source/landing-page
 	sed -i "s/((commit))/${commit_hash}/g" index.html
 	sed -i "s/((year))/${year}/g" index.html
 
+	echo "force_https: true" > Staticfile	
+
   artifact_name="landing-page-${version}.zip"
 	zip -r ${artifact_name} * -x "*.DS_Store" -x "*-manifest.yml"
 	mv ${artifact_name} ../../site

@@ -135,7 +135,7 @@ jobs:
     put: slack
     params:
       username: "rscale-ci"
-      text: "CFF tutorials landing page deployed to staging at https://cff-tutorials.rscale.dev"
+      text: "CFF tutorials landing page deployed to staging at https://cff-tutorials-staging.cfapps.io"
   on_failure:
     put: slack
     params:

@@ -17,7 +17,7 @@ hugo new site .
 
 cp -R ../tutorial-source/content/* content
 if [ -d "../tutorial-source/static" ]; then
-	cp -R ../tutorial-source/static static
+	cp -R ../tutorial-source/static/* static/*
 fi
 
 mkdir themes/hugo-whisper-theme

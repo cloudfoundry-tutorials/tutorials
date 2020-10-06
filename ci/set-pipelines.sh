@@ -12,3 +12,5 @@ fly -t $target sp -p trycf -c ${this_directory}/tutorial/pipeline.yml -l ${this_
 fly -t $target sp -p cf-and-k8s -c ${this_directory}/tutorial/pipeline.yml -l ${this_directory}/tutorial/configs/cf-and-k8s.yml --non-interactive
 
 fly -t $target sp -p cf4k8s-gke -c ${this_directory}/tutorial/pipeline.yml -l ${this_directory}/tutorial/configs/cf4k8s-gke.yml --non-interactive
+
+fly -t $target sp -p cf4k8s-do -c ${this_directory}/tutorial/pipeline.yml -l ${this_directory}/tutorial/configs/cf4k8s-do.yml --non-interactive

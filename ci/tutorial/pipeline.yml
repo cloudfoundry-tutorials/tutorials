@@ -70,20 +70,20 @@ resources:
 - name: deploy-staging
   type: cf
   source:
-    api: https://api.run.pivotal.io
-    username: ((pws_username))
-    password: ((pws_password))
-    organization: cff
-    space: tutorials
+    api: ((cf_api_staging))
+    username: ((cf_username_staging))
+    password: ((cf_password_staging))
+    organization: ((cf_org_staging))
+    space: ((cf_space_staging))
 
 - name: deploy-production
   type: cf
   source:
-    api: https://api.run.pivotal.io
-    username: ((pws_username))
-    password: ((pws_password))
-    organization: cfcommunity
-    space: tutorials
+    api: ((cf_api_production))
+    username: ((cf_username_production))
+    password: ((cf_password_production))
+    organization: ((cf_org_production))
+    space: ((cf_space_production))
 
 jobs:
 
@@ -128,7 +128,7 @@ jobs:
       current_app_name: ((source_repo_name))
       vars:
         app_name: ((source_repo_name))
-        base_route: cff-tutorials-staging.cfapps.io
+        base_route: tutorials-staging.cloudfoundry.org
   on_success:
     put: slack
     params:

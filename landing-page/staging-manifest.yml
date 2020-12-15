@@ -6,4 +6,5 @@ applications:
   buildpacks:
   - staticfile_buildpack
   routes:
-  - route: "cff-tutorials-staging.cfapps.io"
+  - route: tutorials-staging.cloudfoundry.org
+  - route: cff-tutorials-staging.de.a9sapp.eu

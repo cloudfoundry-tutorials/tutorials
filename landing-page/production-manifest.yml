@@ -6,4 +6,5 @@ applications:
   buildpacks:
   - staticfile_buildpack
   routes:
-  - route: "tutorials.cloudfoundry.org"
+  - route: tutorials.cloudfoundry.org
+  - route: cff-tutorials.de.a9sapp.eu

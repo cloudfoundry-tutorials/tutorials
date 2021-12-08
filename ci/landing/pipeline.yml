@@ -135,12 +135,12 @@ jobs:
     put: slack
     params:
       username: "rscale-ci"
-      text: "CFF tutorials landing page deployed to staging at https://cff-tutorials-staging.cfapps.io"
+      text: "CFF tutorials landing page deployed to staging at https://cff-tutorials-staging.kubecf.rscale.dev"
   on_failure:
     put: slack
     params:
       username: "rscale-ci"
-      text: "FAILED to deploy CFF tutorials landing page to staging: https://ci.aws.rscale.io/teams/cff-tutorials/pipelines/landing-page"
+      text: "FAILED to deploy CFF tutorials landing page to staging: https://ci.rscale.dev/teams/cff-tutorials/pipelines/landing-page"
 
 - name: promote
   serial_groups: [version]

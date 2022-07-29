@@ -13,7 +13,7 @@ Have you taken one or more tutorials and have some thoughts? Share your [feedbac
 
 ### Open a pull request
 
-All of the course materials except the Katacoda tutorials are in public repositories in the https://github.com/cloudfoundry-tutorials organization in GitHub. We welcome pull requests on all repositories.
+All of the course materials except the Killercoda tutorials are in public repositories in the https://github.com/cloudfoundry-tutorials organization in GitHub. We welcome pull requests on all repositories.
 
 #### Have an idea?
 

@@ -1,4 +1,0 @@
----
-title: "Installing cf-for-k8s on DigitalOcean"
-source_repo_name: "cf4k8s-do"
-meta_description: "In this tutorial, you will install cf-for-k8s on a Kubernetes cluster in DigitalOcean."

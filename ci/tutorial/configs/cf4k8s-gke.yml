@@ -1,4 +1,0 @@
----
-title: "Installing cf-for-k8s on Google Kubernetes Engine"
-source_repo_name: "cf4k8s-gke"
-meta_description: "In this tutorial, you will install cf-for-k8s on a Kubernetes cluster in Google Kubernetes Engine (GKE)."

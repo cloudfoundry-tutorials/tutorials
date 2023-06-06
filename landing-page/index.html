@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -18,168 +17,50 @@
 	<meta name="author" content="Cloud Foundry Foundation">
 	<title>Tutorials by Cloud Foundry</title>
 	<link rel="canonical" href="https://tutorials.cloudfoundry.org" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css" />
-	<link rel="icon" href="images/favicon.png" type="image/png" />
-	<script src="https://kit.fontawesome.com/1d3b699fa3.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
 </head>
 
-<body data-gr-c-s-loaded="true">
+<body>
+	<div class="container-fluid text-center">
+		<div class="row gx-5 align-items-center" style="height: 95%">
+			<div class="col-lg-3 col-md-12 whatiscf ps-5">
+				<a href="https://tutorials.cloudfoundry.org/what-is-cf">
+					<img src="images/foundry-logo.png" class="img-fluid" alt="Cloud Foundry logo">
+					<p class="mt-1">What is Cloud Foundry?</p>
+				</a>
+			</div>
+			<div class="col-lg-1 d-lg-inline d-md-none d-sm-none d-none">
+				<div class="vr"></div>
+			</div>
+			<div class="col-lg-4 col-md-12 korifi">
+				<a href="https://tutorials.cloudfoundry.org/korifi">
+					<img src="images/korifi-logo-color.svg" class="img-fluid" alt="Korifi logo">
+					<p class="mt-1">The simplicity of cf push on Kubernetes!</p>
+				</a>
+			</div>
+			<div class="col-lg-1  d-lg-inline d-md-none d-sm-none d-none">
+				<div class="vr"></div>
+			</div>
+			<div class="col-lg-3 col-md-12 trycf pe-5">
 
-	<!-- nav -->
-	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-		<h5 class="my-0 mr-md-auto font-weight-normal">
-			<a class="navbar-brand" href="#" alt="Cloud Foundry Logo">
-				<img src="images/logo.png" class="px-1" />
-			</a>
-		</h5>
-		<nav class="my-2 my-md-0 mr-md-3">
-			<a class="p-2 text-dark" href="#get-involved">Get Involved</a>
-			<a class="p-2 text-dark" href="https://github.com/cloudfoundry-tutorials"><i class="fab fa-github"></i></a>
-			<a class="p-2 text-dark" href="https://cloudfoundry.slack.com/archives/CV4DDJXGA"><i class="fab fa-slack"></i></a>
-		</nav>
-	</div>
-
-	<!-- landing -->
-	<div class="px-5 py-5 pt-md-5 pb-md-5 mx-auto text-center" id="landing">
-		<h1 class="display-4">Cloud Foundry Tutorials</h1>
-		<div class="row justify-content-md-center">
-			<div class="col-md-7">
-				<p class="lead">A set of free Cloud Foundry and cloud-native technology tutorials maintained
-					by the <a href="https://www.cloudfoundry.org/foundation/">Cloud Foundry Foundation</a>.
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<!-- beginning -->
-	<div class=" pt-3 px-3 pt-md-5 pb-md-5 px-md-5 text-left">
-		<div class="row px-3 pb-1 justify-content-center">
-			<div class="col-md-1 d-none d-md-block">
-				<img src="images/foundry-logo.png" class="img-fluid" alt="Cloud Foundry logo" />
-			</div>
-			<div class="col-md-4">
-				<h3 class="pb-1">What is Cloud Foundry?</h3>
-				<p>A quick overview of what Cloud Foundry is, what it is not, and why Cloud Foundry matters for software
-					organizations.</p>
-				<p><a class="btn btn-link" href="/what-is-cf/" role="button">Start tutorial »</a></p>
-			</div>
-			<div class="col-md-1 d-none d-md-block">
-				<img src="images/eirini-logo.png" class="img-fluid" alt="project eirini logo" />
-			</div>
-			<div class="col-md-4">
-				<h3 class="pb-1">Cloud Foundry and Kubernetes</h3>
-				<p>In this guide we'll explore how Cloud Foundry and Kubernetes relate to each other, how they work together,
-					and help you decide which workloads to run on which technology.</p>
-				<p><a class="btn btn-link" href="/cf-and-k8s/" role="button">Start tutorial »</a></p>
 			</div>
 		</div>
 	</div>
-
-	<!-- try -->
-	<div id="try" class="bg-light pt-3 px-3 pt-md-5 pb-md-5 px-md-5 text-center">
-		<div class="my-3 p-3">
-			<h2 class="display-5">Try Cloud Foundry</h2>
-			<p class="lead">Two ways to experience Cloud Foundry</p>
-		</div>
-		<div class="bg-light mx-auto" style="width: 80%;">
-			<div class="row px-3 pb-3">
-				<div class="col-md-6">
-					<h3 class="pb-1">On Killercoda</h3>
-					<p class="px-5">The easiest way to try Cloud Foundry - from the comfort of your web browser. There is nothing
-						to install
-						and nothing to sign up for (opens in a new tab).</p>
-					<p><a class="btn btn-link" href="https://killercoda.com/cloudfoundry/scenario/trycf" role="button"
-							target="_blank">Start tutorial »</a></p>
-				</div>
-				<div class="col-md-6">
-					<h3 class="pb-1">On a Hosted Instance</h3>
-					<p class="px-5">Try Cloud Foundry from your laptop using a specific Cloud Foundry instance, like your
-						company's Cloud
-						Foundry instance or one of the many as-a-service providers.</p>
-					<p><a class="btn btn-link" href="/trycf/" role="button">Start tutorial »</a></p>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- certified -->
-	<div id="certified" class="pt-3 px-3 pt-md-5 pb-md-5 px-md-5 text-center">
-		<div class="my-3 p-3">
-			<h2 class="display-5">Get Certified</h2>
-			<p class="lead">Prepare for Cloud Foundry Certification</p>
-		</div>
-		<div class="mx-auto" style="width: 80%;">
-			<div class="row px-3 pb-1 justify-content-center">
-				<div class="col-md-1 d-none d-md-block">
-					<img src="images/cfcd-logo.png" class="img-fluid" alt="Cloud Foundry Certified Developer logo" />
-				</div>
-				<div class="col-md-4 text-left">
-					<h3 class="pb-1">Cloud Foundry Certified Developer Preparation</h3>
-					<p>Are you preparing to take the Cloud Foundry Certified Developer Exam? This tutorial prepares experienced
-						Cloud Foundry users to pass the exam.</p>
-					<p><a class="btn btn-link" href="https://cfcd-prep.cloudfoundry.org" role="button">Start tutorial »</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- get involved -->
-	<div id="get-involved" class="bg-light pt-3 px-3 pt-md-5 pb-md-5 px-md-5 text-center">
-		<div class="my-3 p-3">
-			<h2 class="display-5">Get Involved</h2>
-			<p class="lead">Share your knowledge and experience with the Cloud Foundry community</p>
-		</div>
-		<div class="row justify-content-center text-left">
-			<div class="col-md-6">
-				<h3>Share your feedback</h3>
-				<p class="pb-2">Have you taken one or more tutorials and have some thoughts? Share your <a class=""
-						href="https://forms.gle/AtS9pBUfphRMEFBH7">feedback</a> with us. It only takes a few minutes.</p>
-				<h3>Open a pull request</h3>
-				<p class="pb-2">All of the course materials except the Killercoda tutorials are in public repositories in the
-					<a href="https://github.com/cloudfoundry-tutorials">https://github.com/cloudfoundry-tutorials</a>
-					organization
-					in GitHub. We welcome pull requests on all repositories.
-				</p>
-				<h3>Have an idea?</h3>
-				<p class="pb-2">Do you have an idea for a new tutorial you would like to discuss? Join us in the <a class=""
-						href="https://cloudfoundry.slack.com/archives/CV4DDJXGA">#cloudfoundry-tutorials</a> channel in the
-					Cloud
-					Foundry slack.</p>
-			</div>
-		</div>
-	</div>
-
-	<footer>
-		<div class="container-fluid" id="footer">
-			<div class="row">
-				<div class="col">
-					© ((year)) Cloud Foundry Foundation. All Rights Reserved.
-				</div>
-			</div>
-			<!-- <div class="row">
-					<div class="col">
-						Version: ((version))
-					</div>
-				</div> -->
-			<div class="row">
-				<div class="col">
-					Commit: <a href="https://github.com/cloudfoundry-tutorials/tutorials/tree/((commit))">((commit))</a>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
 </body>
+
+<footer>
+	<div class="container-fluid d-lg-inline d-md-none d-sm-none d-none" id="footer">
+		<div class="row align-items-end">
+			<div class="col">
+				© 2023 Cloud Foundry Foundation. All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</footer>
 
 </html>

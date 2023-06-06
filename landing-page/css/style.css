@@ -1,20 +1,30 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
-
-body {
-	font-family: 'Roboto', sans-serif;
-} */
-
 html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+	font-size: 16px;
 }
 
-.container {
-  max-width: 960px;
+a {
+	text-decoration: none;
+	color: #181818;
+}
+
+.whatiscf>a>p {
+	font-size: 1.5em;
+}
+
+.korifi>a>p {
+	font-size: 2em;
+}
+
+.trycf>a>p {
+	font-size: 1.5em;
+}
+
+.vr {
+	height: 150px;
+}
+
+/* .container {
+	max-width: 960px;
 }
 
 .navbar-brand img {
@@ -23,13 +33,14 @@ html {
 
 #landing p.lead {
 	font-size: 1.6em;
-}
+} */
 
 #footer {
 	padding-top: 15px;
 	text-align: center;
 	font-size: 0.8em;
-} 
+}
+
 /*
 #content {
 	margin-top: 90px;
